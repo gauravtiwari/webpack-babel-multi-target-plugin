@@ -1,13 +1,13 @@
+import { BabelTarget, BabelTargetFactory } from './babel.target';
 import { Compiler, Loader, Plugin } from 'webpack';
 
 import { BabelMultiTargetHtmlUpdater }     from './babel.multi.target.html.updater';
-import { Options }                         from './babel.multi.target.options';
-import { BabelTarget, BabelTargetFactory } from './babel.target';
 import { BabelTargetEntryOptionPlugin }    from './babel.target.entry.option.plugin';
 import { BrowserProfileName }              from './browser.profile.name';
 import { DEFAULT_TARGET_INFO }             from './defaults';
 import { NormalizeCssChunksPlugin }        from './normalize.css.chunks.plugin';
 import { NormalizeModuleIdsPlugin }        from './normalize.module.ids.plugin';
+import { Options }                         from './babel.multi.target.options';
 import { SafariNoModuleFixPlugin }         from './safari-nomodule-fix/safari.nomodule.fix.plugin';
 import { TargetingPlugin }                 from './targeting.plugin';
 
@@ -41,7 +41,11 @@ export class BabelMultiTargetPlugin implements Plugin {
 
     this.options = options;
 
-    const targetFactory = new BabelTargetFactory(options.babel.presetOptions, options.babel.plugins);
+    const targetFactory = new BabelTargetFactory(
+      options.babel.presetOptions,
+      options.babel.presets,
+      options.babel.plugins
+    );
 
     this.targets = Object.keys(options.targets)
       .reduce((result, profileName: BrowserProfileName) => {

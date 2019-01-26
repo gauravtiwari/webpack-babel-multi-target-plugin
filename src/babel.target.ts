@@ -1,20 +1,23 @@
-import { BabelLoaderTransformOptions, BabelPresetOptions } from 'babel-loader'
 import * as webpack from 'webpack'
-import Chunk = webpack.compilation.Chunk
-import ChunkGroup = webpack.compilation.ChunkGroup
-import Entrypoint = webpack.compilation.Entrypoint
-import Module = webpack.compilation.Module
 
-import { BabelLoaderCacheDirectoryOption } from './babel.multi.target.options'
-import { BabelTargetOptions } from './babel.target.options'
+import { BabelLoaderTransformOptions, BabelPresetOptions } from 'babel-loader'
 import { BrowserProfileName, StandardBrowserProfileName } from './browser.profile.name'
-import { DEV_SERVER_CLIENT } from './constants'
 import {
   DEFAULT_BABEL_PLUGINS,
   DEFAULT_BABEL_PRESET_OPTIONS,
   DEFAULT_BROWSERS,
   DEFAULT_TARGET_INFO,
 } from './defaults'
+
+import { BabelLoaderCacheDirectoryOption } from './babel.multi.target.options'
+import { BabelTargetOptions } from './babel.target.options'
+import { DEV_SERVER_CLIENT } from './constants'
+
+import Chunk = webpack.compilation.Chunk
+import ChunkGroup = webpack.compilation.ChunkGroup
+import Entrypoint = webpack.compilation.Entrypoint
+import Module = webpack.compilation.Module
+
 
 export type BabelTargetSource = Module | Chunk | ChunkGroup
 
@@ -194,7 +197,7 @@ export class BabelTarget implements BabelTargetInfo {
 
 export class BabelTargetFactory {
 
-  constructor(private presetOptions: BabelPresetOptions, private plugins: string[]) {
+  constructor(private presetOptions: BabelPresetOptions, private presets: string[], private plugins: string[]) {
   }
 
   public createBabelTarget(profileName: BrowserProfileName, options: BabelTargetOptions, loaderOptions: { cacheDirectory?: BabelLoaderCacheDirectoryOption } ) {
@@ -236,6 +239,7 @@ export class BabelTargetFactory {
     return {
       presets: [
         ['@babel/preset-env', mergedPresetOptions],
+        ...this.presets
       ],
       plugins: [
         ...DEFAULT_BABEL_PLUGINS,

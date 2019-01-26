@@ -1,5 +1,4 @@
 import { BabelPresetOptions } from 'babel-loader'
-
 import { TargetOptionsMap }   from './babel.target.options'
 
 export enum SafariNoModuleFix {
@@ -44,6 +43,11 @@ export interface Options {
      * A list of plugins to use. `@babel/plugin-syntax-dynamic-import` is included by default.
      */
     plugins?: string[]
+
+    /**
+     * A list of presets to use.
+    */
+    presets?: string[];
 
     /**
      * Options for configuring `@babel/preset-env`. Defaults to
