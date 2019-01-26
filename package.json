@@ -11,7 +11,7 @@
     "es6",
     "es7"
   ],
-  "version": "2.1.0-alpha.7",
+  "version": "2.1.0-alpha.9",
   "author": {
     "name": "Daniel Schaffer",
     "email": "dan@dandoes.net",
@@ -19,10 +19,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:DanielSchaffer/webpack-babel-multi-target-plugin.git"
+    "url": "git@github.com:gauravtiwari/webpack-babel-multi-target-plugin-with-presets.git"
   },
-  "homepage": "https://github.com/DanielSchaffer/webpack-babel-multi-target-plugin",
-  "bugs": "https://github.com/DanielSchaffer/webpack-babel-multi-target-plugin/issues",
+  "homepage": "https://github.com/DanielSchaffer/webpack-babel-multi-target-plugin-with-presets",
+  "bugs": "https://github.com/DanielSchaffer/webpack-babel-multi-target-plugin-with-presets/issues",
   "license": "ISC",
   "main": "index.js",
   "typings": "index.d.ts",
